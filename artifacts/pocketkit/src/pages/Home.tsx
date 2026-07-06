@@ -1,7 +1,7 @@
 import { 
   Calculator, 
   Clock, 
-  CalendarDays, 
+  ScanText, 
   FileText, 
   CheckSquare,
   Thermometer,
@@ -17,7 +17,7 @@ export function Home() {
     { name: "Notes", icon: FileText, color: "text-emerald-400", href: "/notes" },
     { name: "Tasks", icon: CheckSquare, color: "text-violet-400", href: "/qr-generator" },
     { name: "Word Counter", icon: Type, color: "text-cyan-400", href: "/word-counter" },
-    { name: "Calendar", icon: CalendarDays, color: "text-rose-400" },
+    { name: "Image to Text", icon: ScanText, color: "text-rose-400", href: "/image-text-extractor" },
     { name: "Timezones", icon: Clock, color: "text-amber-400" },
     { name: "Units", icon: Thermometer, color: "text-pink-400" },
   ];

@@ -10,6 +10,7 @@ import { Calculator } from "@/pages/Calculator";
 import { WordCounter } from "@/pages/WordCounter";
 import { QrGenerator } from "@/pages/QrGenerator";
 import { Notes } from "@/pages/Notes";
+import { ImageTextExtractor } from "@/pages/ImageTextExtractor";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +24,7 @@ function Router() {
         <Route path="/word-counter" component={WordCounter} />
         <Route path="/qr-generator" component={QrGenerator} />
         <Route path="/notes" component={Notes} />
+        <Route path="/image-text-extractor" component={ImageTextExtractor} />
         <Route component={NotFound} />
       </Switch>
     </Shell>
