@@ -8,6 +8,7 @@ import { Home } from "@/pages/Home";
 import { Settings } from "@/pages/Settings";
 import { Calculator } from "@/pages/Calculator";
 import { WordCounter } from "@/pages/WordCounter";
+import { QrGenerator } from "@/pages/QrGenerator";
 
 const queryClient = new QueryClient();
 
@@ -19,6 +20,7 @@ function Router() {
         <Route path="/settings" component={Settings} />
         <Route path="/calculator" component={Calculator} />
         <Route path="/word-counter" component={WordCounter} />
+        <Route path="/qr-generator" component={QrGenerator} />
         <Route component={NotFound} />
       </Switch>
     </Shell>
