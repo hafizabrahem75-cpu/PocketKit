@@ -29,7 +29,7 @@ export function ImageTextExtractor() {
     setIsProcessing(true);
 
     try {
-      const worker = await createWorker("eng", 1, {
+      const worker = await createWorker(["eng", "ara"], 1, {
         logger: (m) => {
           if (m.status === "recognizing text") {
             setProgress(Math.round(m.progress * 100));
