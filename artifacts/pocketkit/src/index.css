@@ -62,6 +62,65 @@
 }
 
 :root {
+  --button-outline: rgba(0,0,0, .08);
+  --badge-outline: rgba(0,0,0, .05);
+  --opaque-button-border-intensity: -9;
+  --elevate-1: rgba(0,0,0, .03);
+  --elevate-2: rgba(0,0,0, .06);
+
+  /* Light Violet Theme */
+  --background: 250 25% 98%;
+  --foreground: 250 15% 12%;
+
+  --card: 0 0% 100%;
+  --card-foreground: 250 15% 12%;
+  --card-border: 250 15% 88%;
+
+  --sidebar: 250 25% 97%;
+  --sidebar-foreground: 250 15% 12%;
+  --sidebar-border: 250 15% 88%;
+  --sidebar-primary: 260 85% 55%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 250 15% 92%;
+  --sidebar-accent-foreground: 250 15% 12%;
+  --sidebar-ring: 260 85% 55%;
+
+  --popover: 0 0% 100%;
+  --popover-foreground: 250 15% 12%;
+  --popover-border: 250 15% 88%;
+
+  --primary: 260 85% 55%;
+  --primary-foreground: 0 0% 100%;
+
+  --secondary: 250 15% 92%;
+  --secondary-foreground: 250 15% 12%;
+
+  --muted: 250 15% 92%;
+  --muted-foreground: 250 10% 40%;
+
+  --accent: 260 85% 55%;
+  --accent-foreground: 0 0% 100%;
+
+  --destructive: 0 84% 50%;
+  --destructive-foreground: 0 0% 100%;
+
+  --border: 250 15% 88%;
+  --input: 250 15% 92%;
+  --ring: 260 85% 55%;
+
+  --app-font-sans: 'Plus Jakarta Sans', sans-serif;
+  --radius: 1rem;
+
+  --sidebar-primary-border: hsl(from hsl(var(--sidebar-primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --sidebar-accent-border: hsl(from hsl(var(--sidebar-accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --primary-border: hsl(from hsl(var(--primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --secondary-border: hsl(from hsl(var(--secondary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --muted-border: hsl(from hsl(var(--muted)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --accent-border: hsl(from hsl(var(--accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --destructive-border: hsl(from hsl(var(--destructive)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+}
+
+.dark {
   --button-outline: rgba(255,255,255, .10);
   --badge-outline: rgba(255,255,255, .05);
   --opaque-button-border-intensity: 9;
@@ -108,9 +167,6 @@
   --input: 250 15% 18%;
   --ring: 260 85% 65%;
 
-  --app-font-sans: 'Plus Jakarta Sans', sans-serif;
-  --radius: 1rem;
-
   --sidebar-primary-border: hsl(from hsl(var(--sidebar-primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
   --sidebar-accent-border: hsl(from hsl(var(--sidebar-accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
   --primary-border: hsl(from hsl(var(--primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
@@ -118,10 +174,6 @@
   --muted-border: hsl(from hsl(var(--muted)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
   --accent-border: hsl(from hsl(var(--accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
   --destructive-border: hsl(from hsl(var(--destructive)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-}
-
-.dark {
-  /* Same as root because we only want dark mode */
 }
 
 @layer base {

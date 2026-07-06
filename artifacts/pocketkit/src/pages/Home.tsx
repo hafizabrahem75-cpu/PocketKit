@@ -10,25 +10,28 @@ import {
   Languages
 } from "lucide-react";
 import { Link } from "wouter";
+import { useLanguage } from "@/lib/i18n";
 
 export function Home() {
+  const { t } = useLanguage();
+
   const placeholders = [
-    { name: "Calculator", icon: Calculator, color: "text-blue-400", href: "/calculator" },
-    { name: "Timer", icon: Timer, color: "text-orange-400" },
-    { name: "Notes", icon: FileText, color: "text-emerald-400", href: "/notes" },
-    { name: "Tasks", icon: CheckSquare, color: "text-violet-400", href: "/qr-generator" },
-    { name: "Word Counter", icon: Type, color: "text-cyan-400", href: "/word-counter" },
-    { name: "Image to Text", icon: ScanText, color: "text-rose-400", href: "/image-text-extractor" },
-    { name: "Translator", icon: Languages, color: "text-indigo-400", href: "/translator" },
-    { name: "Timezones", icon: Clock, color: "text-amber-400" },
-    { name: "Units", icon: Thermometer, color: "text-pink-400" },
+    { name: t("tool.calculator"), icon: Calculator, color: "text-blue-400", href: "/calculator" },
+    { name: t("tool.timer"), icon: Timer, color: "text-orange-400" },
+    { name: t("tool.notes"), icon: FileText, color: "text-emerald-400", href: "/notes" },
+    { name: t("tool.tasks"), icon: CheckSquare, color: "text-violet-400", href: "/qr-generator" },
+    { name: t("tool.wordCounter"), icon: Type, color: "text-cyan-400", href: "/word-counter" },
+    { name: t("tool.imageToText"), icon: ScanText, color: "text-rose-400", href: "/image-text-extractor" },
+    { name: t("tool.translator"), icon: Languages, color: "text-indigo-400", href: "/translator" },
+    { name: t("tool.timezones"), icon: Clock, color: "text-amber-400" },
+    { name: t("tool.units"), icon: Thermometer, color: "text-pink-400" },
   ];
 
   return (
     <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <header className="space-y-2">
-        <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Your Toolkit</h2>
-        <p className="text-muted-foreground text-lg">A calm space for your daily utilities.</p>
+        <h2 className="text-3xl md:text-4xl font-bold tracking-tight">{t("home.title")}</h2>
+        <p className="text-muted-foreground text-lg">{t("home.subtitle")}</p>
       </header>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-6">

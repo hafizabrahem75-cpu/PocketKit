@@ -1,5 +1,6 @@
 import { Link, useLocation } from "wouter";
 import { LayoutGrid, Settings } from "lucide-react";
+import { useLanguage } from "@/lib/i18n";
 
 interface ShellProps {
   children: React.ReactNode;
@@ -7,10 +8,11 @@ interface ShellProps {
 
 export function Shell({ children }: ShellProps) {
   const [location] = useLocation();
+  const { t } = useLanguage();
 
   const navItems = [
-    { href: "/", label: "Home", icon: LayoutGrid },
-    { href: "/settings", label: "Settings", icon: Settings },
+    { href: "/", label: t("nav.home"), icon: LayoutGrid },
+    { href: "/settings", label: t("nav.settings"), icon: Settings },
   ];
 
   return (
@@ -19,7 +21,7 @@ export function Shell({ children }: ShellProps) {
       <aside className="hidden md:flex w-64 flex-col border-r border-border bg-card p-4 h-screen sticky top-0">
         <div className="mb-8 px-4">
           <h1 className="text-xl font-bold tracking-tight bg-gradient-to-br from-primary to-primary/60 bg-clip-text text-transparent">
-            PocketKit
+            {t("appName")}
           </h1>
         </div>
         
