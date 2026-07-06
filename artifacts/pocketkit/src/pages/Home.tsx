@@ -1,12 +1,9 @@
 import { 
   Calculator, 
-  Clock, 
   ScanText, 
   FileText, 
   QrCode,
-  Thermometer,
   Type,
-  Timer,
   Languages
 } from "lucide-react";
 import { Link } from "wouter";
@@ -15,16 +12,13 @@ import { useLanguage } from "@/lib/i18n";
 export function Home() {
   const { t } = useLanguage();
 
-  const placeholders = [
+  const tools = [
     { name: t("tool.calculator"), icon: Calculator, color: "text-blue-400", href: "/calculator" },
-    { name: t("tool.timer"), icon: Timer, color: "text-orange-400" },
     { name: t("tool.notes"), icon: FileText, color: "text-emerald-400", href: "/notes" },
     { name: t("tool.qrScanner"), icon: QrCode, color: "text-violet-400", href: "/qr-generator" },
     { name: t("tool.wordCounter"), icon: Type, color: "text-cyan-400", href: "/word-counter" },
     { name: t("tool.imageToText"), icon: ScanText, color: "text-rose-400", href: "/image-text-extractor" },
     { name: t("tool.translator"), icon: Languages, color: "text-indigo-400", href: "/translator" },
-    { name: t("tool.timezones"), icon: Clock, color: "text-amber-400" },
-    { name: t("tool.units"), icon: Thermometer, color: "text-pink-400" },
   ];
 
   return (
@@ -35,7 +29,7 @@ export function Home() {
       </header>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-6">
-        {placeholders.map((tool, index) => {
+        {tools.map((tool, index) => {
           const Icon = tool.icon;
           const cardContent = (
             <>

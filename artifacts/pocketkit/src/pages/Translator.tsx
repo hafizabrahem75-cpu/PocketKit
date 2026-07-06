@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { ArrowLeftRight, Copy, Check, Loader2, ImageOff, Upload, Languages } from "lucide-react";
 import { extractTextFromImage } from "@/lib/ocr";
-import { translateText, type TranslateLang } from "@/lib/translate";
+import { translateText, TranslationError, type TranslateLang } from "@/lib/translate";
 
 type Mode = "text" | "image";
 
@@ -53,8 +53,12 @@ export function Translator() {
     try {
       const translated = await translateText(text, from, to);
       setResultText(translated);
-    } catch {
-      setError("Could not translate this text. Please try again.");
+    } catch (err) {
+      setError(
+        err instanceof TranslationError
+          ? err.message
+          : "Could not translate this text. Please try again.",
+      );
     } finally {
       setIsTranslating(false);
     }
