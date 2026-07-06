@@ -5,7 +5,7 @@ import {
   FileText, 
   CheckSquare,
   Thermometer,
-  CloudRain,
+  Type,
   Timer
 } from "lucide-react";
 import { Link } from "wouter";
@@ -14,9 +14,9 @@ export function Home() {
   const placeholders = [
     { name: "Calculator", icon: Calculator, color: "text-blue-400", href: "/calculator" },
     { name: "Timer", icon: Timer, color: "text-orange-400" },
-    { name: "Notes", icon: FileText, color: "text-emerald-400", href: "/word-counter" },
+    { name: "Notes", icon: FileText, color: "text-emerald-400", href: "/notes" },
     { name: "Tasks", icon: CheckSquare, color: "text-violet-400", href: "/qr-generator" },
-    { name: "Weather", icon: CloudRain, color: "text-cyan-400" },
+    { name: "Word Counter", icon: Type, color: "text-cyan-400", href: "/word-counter" },
     { name: "Calendar", icon: CalendarDays, color: "text-rose-400" },
     { name: "Timezones", icon: Clock, color: "text-amber-400" },
     { name: "Units", icon: Thermometer, color: "text-pink-400" },
