@@ -8,10 +8,11 @@ import {
   CloudRain,
   Timer
 } from "lucide-react";
+import { Link } from "wouter";
 
 export function Home() {
   const placeholders = [
-    { name: "Calculator", icon: Calculator, color: "text-blue-400" },
+    { name: "Calculator", icon: Calculator, color: "text-blue-400", href: "/calculator" },
     { name: "Timer", icon: Timer, color: "text-orange-400" },
     { name: "Notes", icon: FileText, color: "text-emerald-400" },
     { name: "Tasks", icon: CheckSquare, color: "text-violet-400" },
@@ -31,11 +32,8 @@ export function Home() {
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-6">
         {placeholders.map((tool, index) => {
           const Icon = tool.icon;
-          return (
-            <button
-              key={index}
-              className="group relative flex flex-col items-center justify-center gap-4 p-6 rounded-2xl bg-card border border-border hover:border-primary/50 hover:bg-card/80 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_24px_-12px_rgba(139,92,246,0.3)]"
-            >
+          const cardContent = (
+            <>
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               <div className={`p-4 rounded-xl bg-background border border-border shadow-sm group-hover:scale-110 transition-transform duration-300 ${tool.color}`}>
                 <Icon className="w-8 h-8" strokeWidth={1.5} />
@@ -43,6 +41,22 @@ export function Home() {
               <span className="font-medium text-sm md:text-base text-foreground/80 group-hover:text-foreground transition-colors">
                 {tool.name}
               </span>
+            </>
+          );
+          const className =
+            "group relative flex flex-col items-center justify-center gap-4 p-6 rounded-2xl bg-card border border-border hover:border-primary/50 hover:bg-card/80 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_24px_-12px_rgba(139,92,246,0.3)] w-full";
+
+          if (tool.href) {
+            return (
+              <Link key={index} href={tool.href} className={className}>
+                {cardContent}
+              </Link>
+            );
+          }
+
+          return (
+            <button key={index} className={className}>
+              {cardContent}
             </button>
           );
         })}
