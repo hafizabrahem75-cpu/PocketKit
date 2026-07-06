@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "PocketKit"
+version = "1.0.0"
+id = "artifacts/pocketkit"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 24766
+
+[services.development]
+run = "pnpm --filter @workspace/pocketkit run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/pocketkit", "run", "build" ]
+publicDir = "artifacts/pocketkit/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24766"
+BASE_PATH = "/"
