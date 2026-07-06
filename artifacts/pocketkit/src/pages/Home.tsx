@@ -6,7 +6,8 @@ import {
   CheckSquare,
   Thermometer,
   Type,
-  Timer
+  Timer,
+  Languages
 } from "lucide-react";
 import { Link } from "wouter";
 
@@ -18,6 +19,7 @@ export function Home() {
     { name: "Tasks", icon: CheckSquare, color: "text-violet-400", href: "/qr-generator" },
     { name: "Word Counter", icon: Type, color: "text-cyan-400", href: "/word-counter" },
     { name: "Image to Text", icon: ScanText, color: "text-rose-400", href: "/image-text-extractor" },
+    { name: "Translator", icon: Languages, color: "text-indigo-400", href: "/translator" },
     { name: "Timezones", icon: Clock, color: "text-amber-400" },
     { name: "Units", icon: Thermometer, color: "text-pink-400" },
   ];

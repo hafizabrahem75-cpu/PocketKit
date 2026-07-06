@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
-import { createWorker } from "tesseract.js";
 import { Upload, Copy, Check, Loader2, ImageOff } from "lucide-react";
+import { extractTextFromImage } from "@/lib/ocr";
 
 export function ImageTextExtractor() {
   const [imageUrl, setImageUrl] = useState<string | null>(null);
@@ -29,16 +29,8 @@ export function ImageTextExtractor() {
     setIsProcessing(true);
 
     try {
-      const worker = await createWorker(["eng", "ara"], 1, {
-        logger: (m) => {
-          if (m.status === "recognizing text") {
-            setProgress(Math.round(m.progress * 100));
-          }
-        },
-      });
-      const { data } = await worker.recognize(file);
-      setExtractedText(data.text.trim());
-      await worker.terminate();
+      const text = await extractTextFromImage(file, setProgress);
+      setExtractedText(text);
     } catch {
       setError("Could not extract text from this image.");
     } finally {

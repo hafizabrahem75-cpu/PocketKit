@@ -11,6 +11,7 @@ import { WordCounter } from "@/pages/WordCounter";
 import { QrGenerator } from "@/pages/QrGenerator";
 import { Notes } from "@/pages/Notes";
 import { ImageTextExtractor } from "@/pages/ImageTextExtractor";
+import { Translator } from "@/pages/Translator";
 
 const queryClient = new QueryClient();
 
@@ -25,6 +26,7 @@ function Router() {
         <Route path="/qr-generator" component={QrGenerator} />
         <Route path="/notes" component={Notes} />
         <Route path="/image-text-extractor" component={ImageTextExtractor} />
+        <Route path="/translator" component={Translator} />
         <Route component={NotFound} />
       </Switch>
     </Shell>
