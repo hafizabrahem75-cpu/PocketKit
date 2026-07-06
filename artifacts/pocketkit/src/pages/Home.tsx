@@ -14,7 +14,7 @@ export function Home() {
   const placeholders = [
     { name: "Calculator", icon: Calculator, color: "text-blue-400", href: "/calculator" },
     { name: "Timer", icon: Timer, color: "text-orange-400" },
-    { name: "Notes", icon: FileText, color: "text-emerald-400" },
+    { name: "Notes", icon: FileText, color: "text-emerald-400", href: "/word-counter" },
     { name: "Tasks", icon: CheckSquare, color: "text-violet-400" },
     { name: "Weather", icon: CloudRain, color: "text-cyan-400" },
     { name: "Calendar", icon: CalendarDays, color: "text-rose-400" },
