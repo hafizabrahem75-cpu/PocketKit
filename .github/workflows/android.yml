@@ -25,8 +25,13 @@ jobs:
       - name: Enable pnpm
         run: corepack enable
 
+      - name: Configure pnpm
+        run: |
+          pnpm config set ignore-scripts false
+          pnpm config set enable-pre-post-scripts true
+
       - name: Install dependencies
-        run: pnpm install --config.ignore-scripts=false
+        run: pnpm install
 
       - name: Capacitor sync
         run: |
