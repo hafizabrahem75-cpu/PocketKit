@@ -28,7 +28,11 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Capacitor sync
+      - name: Approve pnpm builds
+        run: |
+          pnpm approve-builds -r || true
+
+      - name: Install Capacitor Android
         run: |
           cd artifacts/pocketkit
           pnpm exec cap sync android
