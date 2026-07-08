@@ -20,6 +20,7 @@ const translations = {
     "tool.translator": "Translator",
     "tool.imageToPdf": "Image to PDF",
     "tool.clipboard": "Clipboard",
+    "tool.scanner": "Scanner",
 
     "settings.title": "Settings",
     "settings.subtitle": "Manage your toolkit preferences.",
@@ -57,6 +58,7 @@ const translations = {
     "tool.translator": "المترجم",
     "tool.imageToPdf": "صور إلى PDF",
     "tool.clipboard": "الحافظة",
+    "tool.scanner": "الماسح الضوئي",
 
     "settings.title": "الإعدادات",
     "settings.subtitle": "إدارة تفضيلات أدواتك.",

@@ -6,7 +6,8 @@ import {
   Type,
   Languages,
   FileImage,
-  Clipboard
+  Clipboard,
+  ScanSearch
 } from "lucide-react";
 import { Link } from "wouter";
 import { useLanguage } from "@/lib/i18n";
@@ -23,6 +24,7 @@ export function Home() {
     { name: t("tool.translator"), icon: Languages, color: "text-indigo-400", href: "/translator" },
     { name: t("tool.imageToPdf"), icon: FileImage, color: "text-amber-400", href: "/image-to-pdf" },
     { name: t("tool.clipboard"), icon: Clipboard, color: "text-teal-400", href: "/clipboard" },
+    { name: t("tool.scanner"), icon: ScanSearch, color: "text-orange-400", href: "/scanner" },
   ];
 
   return (

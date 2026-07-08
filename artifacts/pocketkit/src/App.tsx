@@ -14,6 +14,7 @@ import { ImageTextExtractor } from "@/pages/ImageTextExtractor";
 import { Translator } from "@/pages/Translator";
 import { ImageToPdf } from "@/pages/ImageToPdf";
 import { ClipboardManager } from "@/pages/ClipboardManager";
+import { UniversalScanner } from "@/pages/UniversalScanner";
 import { ThemeProvider } from "@/lib/theme";
 import { LanguageProvider } from "@/lib/i18n";
 
@@ -33,6 +34,7 @@ function Router() {
         <Route path="/translator" component={Translator} />
         <Route path="/image-to-pdf" component={ImageToPdf} />
         <Route path="/clipboard" component={ClipboardManager} />
+        <Route path="/scanner" component={UniversalScanner} />
         <Route component={NotFound} />
       </Switch>
     </Shell>
