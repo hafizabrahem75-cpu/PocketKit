@@ -7,6 +7,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    env:
+      PNPM_IGNORE_SCRIPTS: false
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -23,12 +26,13 @@ jobs:
           java-version: 17
 
       - name: Enable pnpm
-        run: corepack enable
+        run: |
+          corepack enable
+          corepack prepare pnpm@latest --activate
 
       - name: Configure pnpm
         run: |
           pnpm config set ignore-scripts false
-          pnpm config set enable-pre-post-scripts true
 
       - name: Install dependencies
         run: pnpm install
