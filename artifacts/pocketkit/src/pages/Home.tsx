@@ -5,7 +5,8 @@ import {
   QrCode,
   Type,
   Languages,
-  FileImage
+  FileImage,
+  Clipboard
 } from "lucide-react";
 import { Link } from "wouter";
 import { useLanguage } from "@/lib/i18n";
@@ -21,6 +22,7 @@ export function Home() {
     { name: t("tool.imageToText"), icon: ScanText, color: "text-rose-400", href: "/image-text-extractor" },
     { name: t("tool.translator"), icon: Languages, color: "text-indigo-400", href: "/translator" },
     { name: t("tool.imageToPdf"), icon: FileImage, color: "text-amber-400", href: "/image-to-pdf" },
+    { name: t("tool.clipboard"), icon: Clipboard, color: "text-teal-400", href: "/clipboard" },
   ];
 
   return (
