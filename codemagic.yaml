@@ -1,0 +1,36 @@
+workflows:
+  android-debug:
+    name: PocketKit Android Debug APK
+
+    environment:
+      node: 22
+      java: 17
+
+    scripts:
+      - name: Enable Corepack
+        script: |
+          corepack enable
+          corepack prepare pnpm@10 --activate
+
+      - name: Install dependencies
+        script: |
+          pnpm install
+
+      - name: Build web
+        script: |
+          cd artifacts/pocketkit
+          pnpm run build
+
+      - name: Sync Capacitor
+        script: |
+          cd artifacts/pocketkit
+          pnpm exec cap sync android
+
+      - name: Build APK
+        script: |
+          cd artifacts/pocketkit/android
+          chmod +x gradlew
+          ./gradlew assembleDebug
+
+    artifacts:
+      - artifacts/pocketkit/android/app/build/outputs/apk/debug/app-debug.apk
