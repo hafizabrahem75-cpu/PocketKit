@@ -80,6 +80,7 @@
     "@capacitor/android": "^8.4.1",
     "@capacitor/core": "^8.4.1",
     "html5-qrcode": "^2.3.8",
+    "jspdf": "^4.2.1",
     "qrcode": "^1.5.4",
     "tesseract.js": "^7.0.0"
   }

@@ -18,6 +18,7 @@ const translations = {
     "tool.wordCounter": "Word Counter",
     "tool.imageToText": "Image to Text",
     "tool.translator": "Translator",
+    "tool.imageToPdf": "Image to PDF",
 
     "settings.title": "Settings",
     "settings.subtitle": "Manage your toolkit preferences.",
@@ -52,6 +53,7 @@ const translations = {
     "tool.wordCounter": "عداد الكلمات",
     "tool.imageToText": "استخراج النص من الصورة",
     "tool.translator": "المترجم",
+    "tool.imageToPdf": "صور إلى PDF",
 
     "settings.title": "الإعدادات",
     "settings.subtitle": "إدارة تفضيلات أدواتك.",
