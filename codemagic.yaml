@@ -2,29 +2,36 @@ workflows:
   android-debug:
     name: PocketKit Android Debug APK
 
+    instance_type: mac_mini_m2
+
     environment:
       node: 22
       java: 17
-      vars:
-        COREPACK_ENABLE_PROJECT_SPEC: 0
 
     scripts:
 
-      - name: Enable Corepack
+      - name: Setup pnpm
         script: |
           corepack enable
-          corepack prepare pnpm@10 --activate
+          corepack prepare pnpm@10.12.4 --activate
+          pnpm --version
+
+      - name: Clean old files
+        script: |
+          rm -rf node_modules
+          rm -rf artifacts/pocketkit/node_modules
+          pnpm store prune
 
       - name: Install dependencies
         script: |
-          pnpm install --frozen-lockfile
+          pnpm install --force
 
-      - name: Build web
+      - name: Build PocketKit Web
         script: |
           cd artifacts/pocketkit
           pnpm run build
 
-      - name: Sync Capacitor
+      - name: Capacitor Android Sync
         script: |
           cd artifacts/pocketkit
           pnpm exec cap sync android
