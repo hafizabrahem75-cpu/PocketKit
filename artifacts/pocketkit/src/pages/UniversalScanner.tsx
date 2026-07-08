@@ -317,28 +317,38 @@ export function UniversalScanner() {
       }
     }
 
-    // Run QR/barcode scan + OCR in parallel
-    const [qrResult, ocrText] = await Promise.allSettled([
-      scanImageFile(file),
-      extractTextFromImage(file, setOcrProgress),
-    ]);
+    // ── Step 1: QR / barcode scan (fast, no worker) ──────────────────────────
+    // Run this first and alone so it finishes before the tesseract worker boots,
+    // preventing the two engines from racing to read the same File bytes.
+    let qrValue: string | null = null;
+    try {
+      qrValue = await scanImageFile(file);
+    } catch {
+      // No QR/barcode found — not an error, carry on to OCR
+    }
 
-    // Process QR/barcode result
-    if (qrResult.status === "fulfilled" && qrResult.value) {
-      const r = makeResult(qrResult.value, "qr");
+    if (qrValue) {
+      const r = makeResult(qrValue, "qr");
       addUnique(r);
-      // Also extract sub-entities from QR content
-      for (const e of extractEntities(qrResult.value)) {
+      for (const e of extractEntities(qrValue)) {
         if (e.value !== r.value) addUnique(e);
       }
     }
 
-    // Process OCR result
-    if (ocrText.status === "fulfilled" && ocrText.value.trim()) {
-      const text = ocrText.value.trim();
-      // Extract typed entities first
+    // ── Step 2: OCR (tesseract worker) ────────────────────────────────────────
+    // Run sequentially after the QR scan to avoid the worker error that tesseract
+    // fires as a synchronous window.onerror when both engines share the File simultaneously.
+    let ocrText = "";
+    try {
+      ocrText = await extractTextFromImage(file, setOcrProgress);
+    } catch {
+      // OCR failed (unsupported image, worker error, etc.) — use QR results if any
+    }
+
+    if (ocrText.trim()) {
+      const text = ocrText.trim();
       for (const e of extractEntities(text)) addUnique(e);
-      // Add the full text block only if it's not already a single entity
+      // Include the full text block when there are no other results or it's substantial
       if (combined.length === 0 || text.length > 80) {
         addUnique({
           id: `text-${Date.now()}`,
@@ -359,16 +369,23 @@ export function UniversalScanner() {
     }
   }
 
+  function runProcessFile(file: File) {
+    processFile(file).catch(() => {
+      setScanState("error");
+      setErrorMsg("Something went wrong scanning this image. Please try again.");
+    });
+  }
+
   function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
-    if (file) void processFile(file);
+    if (file) runProcessFile(file);
     e.target.value = "";
   }
 
   function handleDrop(e: React.DragEvent) {
     e.preventDefault();
     const file = e.dataTransfer.files[0];
-    if (file) void processFile(file);
+    if (file) runProcessFile(file);
   }
 
   function switchMode(next: Mode) {
