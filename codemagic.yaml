@@ -5,8 +5,11 @@ workflows:
     environment:
       node: 22
       java: 17
+      vars:
+        COREPACK_ENABLE_PROJECT_SPEC: 0
 
     scripts:
+
       - name: Enable Corepack
         script: |
           corepack enable
@@ -14,7 +17,7 @@ workflows:
 
       - name: Install dependencies
         script: |
-          pnpm install
+          pnpm install --frozen-lockfile
 
       - name: Build web
         script: |
