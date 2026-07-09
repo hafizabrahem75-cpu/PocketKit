@@ -3,8 +3,9 @@ workflows:
     name: PocketKit Android Debug APK
 
     environment:
-      node: 22
-      java: 17
+  node: 22
+  java: 17
+  instance_type: linux
 
     scripts:
 
