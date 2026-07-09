@@ -40,11 +40,11 @@ jobs:
           pnpm approve-builds --all || true
 
       - name: Build Web
-  env:
-    PORT: 3000
-  run: |
-    cd artifacts/pocketkit
-    pnpm run build
+        env:
+          PORT: 3000
+        run: |
+          cd artifacts/pocketkit
+          pnpm run build
 
       - name: Capacitor sync
         run: |
