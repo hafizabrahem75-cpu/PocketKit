@@ -42,6 +42,7 @@ jobs:
       - name: Build Web
         env:
           PORT: 3000
+          BASE_PATH: /
         run: |
           cd artifacts/pocketkit
           pnpm run build
