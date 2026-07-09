@@ -7,9 +7,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    env:
-      PNPM_IGNORE_SCRIPTS: false
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -25,17 +22,27 @@ jobs:
           distribution: temurin
           java-version: 17
 
-      - name: Enable pnpm
+      - name: Setup pnpm
         run: |
           corepack enable
-          corepack prepare pnpm@latest --activate
+          corepack prepare pnpm@10 --activate
+          pnpm --version
 
-      - name: Configure pnpm
+      - name: Clean cache
         run: |
-          pnpm config set ignore-scripts false
+          rm -rf node_modules
+          rm -rf artifacts/pocketkit/node_modules
+          pnpm store prune
 
       - name: Install dependencies
-        run: pnpm install
+        run: |
+          pnpm install --no-frozen-lockfile
+          pnpm approve-builds --all || true
+
+      - name: Build Web
+        run: |
+          cd artifacts/pocketkit
+          pnpm run build
 
       - name: Capacitor sync
         run: |
