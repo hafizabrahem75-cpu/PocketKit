@@ -2,29 +2,17 @@ workflows:
   android-debug:
     name: PocketKit Android Debug APK
 
+    instance_type: linux_x2
+
     environment:
-  node: 22
-  java: 17
-  instance_type: linux
+      node: 22
+      java: 17
 
     scripts:
-
-      - name: Force pnpm
+      - name: Install dependencies
         script: |
-          unset npm_config_user_agent
-          corepack disable
-          npm install -g pnpm@10.12.4
-          pnpm --version
-
-      - name: Clean
-        script: |
-          rm -rf node_modules
-          rm -rf artifacts/pocketkit/node_modules
-          rm -f package-lock.json
-          rm -f yarn.lock
-
-      - name: Install
-        script: |
+          corepack enable
+          corepack prepare pnpm@10 --activate
           pnpm install --force
 
       - name: Build Web
@@ -32,7 +20,7 @@ workflows:
           cd artifacts/pocketkit
           pnpm run build
 
-      - name: Sync Android
+      - name: Sync Capacitor
         script: |
           cd artifacts/pocketkit
           pnpm exec cap sync android
